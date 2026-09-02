@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  /* Spacing — pixel-perfect scale (p-40 = 40px) */
+  --spacing: 1px;
+
+  /* Colors — Caldera */
+  --color-ember: #fc5000;
+  --color-plasma-violet: #524ae9;
+  --color-sulfur: #f5f28e;
+  --color-limestone: #f7f6f2;
+  --color-pumice: #e2e2df;
+  --color-obsidian: #070607;
+  --color-chalk: #ffffff;
+
+  /* Typography — Families */
+  --font-display: "Anton", "PP Neue Corp Compact", "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 12px;
+  --text-caption--line-height: 1.2;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.2;
+  --text-body: 16px;
+  --text-body--line-height: 1.55;
+  --text-subheading: 26px;
+  --text-subheading--line-height: 1.2;
+  --text-heading-sm: 30px;
+  --text-heading-sm--line-height: 1.5;
+  --text-heading: 32px;
+  --text-heading--line-height: 1;
+  --text-heading-lg: 48px;
+  --text-heading-lg--line-height: 1;
+  --text-heading-2xl: 80px;
+  --text-heading-2xl--line-height: 1.1;
+  --text-heading-3xl: 96px;
+  --text-heading-3xl--line-height: 0.95;
+  --text-display: 189px;
+  --text-display--line-height: 0.94;
+
+  /* Tracking */
+  --tracking-display: 0.02em;
+  --tracking-heading: 0.64px;
+
+  /* Border Radius */
+  --radius-cards: 40px;
+  --radius-pills: 800px;
+  --radius-small: 16px;
+  --radius-inputs: 100px;
+  --radius-medium: 20px;
+  --radius-buttons: 40px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-obsidian);
+    background-color: var(--color-pumice);
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: var(--color-chalk);
+  }
+}
+
+@layer utilities {
+  /* Hero halftone: violet → ember gradient + orange dots, fading to solid at top-right */
+  .halftone-hero {
+    background: linear-gradient(135deg, #524ae9 0%, #fc5000 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .halftone-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: radial-gradient(circle, rgba(252, 80, 0, 0.9) 1.5px, transparent 1.7px);
+    background-size: 14px 14px;
+    -webkit-mask-image: linear-gradient(to top right, black 0%, transparent 78%);
+    mask-image: linear-gradient(to top right, black 0%, transparent 78%);
+    pointer-events: none;
+  }
+
+  /* Plasma card: violet + white dots */
+  .halftone-plasma {
+    background-color: #524ae9;
+    position: relative;
+    overflow: hidden;
+  }
+  .halftone-plasma::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.65) 1.5px, transparent 1.7px);
+    background-size: 14px 14px;
+    -webkit-mask-image: linear-gradient(to top right, black 0%, transparent 72%);
+    mask-image: linear-gradient(to top right, black 0%, transparent 72%);
+    pointer-events: none;
+  }
+
+  /* Dotted divider (Caldera signature) */
+  .dotted-divider {
+    background-image: radial-gradient(circle, #070607 1px, transparent 1px);
+    background-size: 6px 2px;
+    background-position: center;
+  }
+}
